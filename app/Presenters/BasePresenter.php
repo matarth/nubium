@@ -9,8 +9,4 @@ class BasePresenter extends Presenter
 
     protected const itemsPerPage = 5;
 
-    protected function createComponentLoginCheck(){
-
-    }
-
 }

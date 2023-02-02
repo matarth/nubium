@@ -19,7 +19,7 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter
         $this->db = $db;
     }
 
-    public function renderDefault(){
+    public function renderDefault(): void{
         dumpe(
             $this->db->table('user')->count()
         );

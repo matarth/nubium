@@ -36,7 +36,7 @@ class UserRepository extends BaseRepository
         return $this->userFactory->createFromDbRow($user);
     }
 
-    public function saveNewUser(User $user){
+    public function saveNewUser(User $user): void{
         $userArray = $user->toArray();
         unset($userArray['id']);
         $this->db->table('user')->insert($userArray);

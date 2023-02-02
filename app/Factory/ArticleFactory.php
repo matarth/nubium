@@ -8,7 +8,7 @@ use Nette\Database\Table\ActiveRow;
 class ArticleFactory
 {
 
-    public function createFromDbRow(ActiveRow $article){
+    public function createFromDbRow(ActiveRow $article): Article{
 
         return new Article(
             $article->id,

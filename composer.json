@@ -26,17 +26,28 @@
 		"symfony/thanks": "^1",
 		"phpstan/phpstan": "^1.9",
 		"codeception/codeception": "^5.0",
-		"codeception/module-phpbrowser": "^3.0"
+		"codeception/module-phpbrowser": "^3.0",
+		"phpstan/phpstan-nette": "^1.2",
+		"phpstan/extension-installer": "^1.2"
 	},
 	"autoload": {
 		"psr-4": {
 			"App\\": "app"
 		}
 	},
+	"scripts": {
+		"phpcs": "phpcbf app/",
+		"phpstan": "phpstan analyse -c phpstan.neon",
+		"ci": [
+			"@phpstan",
+			"@phpcs"
+		]
+	},
 	"minimum-stability": "stable",
 	"config": {
 		"allow-plugins": {
-			"symfony/thanks": true
+			"symfony/thanks": true,
+			"phpstan/extension-installer": true
 		}
 	}
 }

@@ -37,11 +37,14 @@ class ArticleRepository extends BaseRepository
         return $ret;
     }
 
+    /**
+     * @return Article[]
+     */
     public function getArticlesForPage(Paginator $paginator): array
     {
         $ret = [];
         $articles = $this->db->table('article')
-            ->page($paginator->getPage(), $paginator->itemsPerPage)
+            ->page(max(0,$paginator->getPage()), $paginator->getItemsPerPage())
             ->order('validSince DESC')
             ->fetchAll();
 

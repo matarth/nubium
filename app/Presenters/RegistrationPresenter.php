@@ -35,7 +35,13 @@ final class RegistrationPresenter extends BasePresenter
 
     }
 
-    public function formSuccess(RegistrationForm $form, $data): void
+    /**
+     * @param mixed[] $data
+     * @return void
+     * @throws \App\Exception\UserNotFoundException
+     * @throws \Nette\Application\AbortException
+     */
+    public function formSuccess(RegistrationForm $form, array $data): void
     {
 
         if(

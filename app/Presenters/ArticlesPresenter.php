@@ -15,7 +15,7 @@ class ArticlesPresenter extends BasePresenter
         $this->articleRepository = $articleRepository;
     }
 
-    public function renderDefault(int $page = 1)
+    public function renderDefault(int $page = 1): void
     {
         $paginator = new Paginator();
         $paginator->setItemCount($this->articleRepository->getArticlesCount());
@@ -23,7 +23,7 @@ class ArticlesPresenter extends BasePresenter
         $paginator->setPage($page);
 
         $articles = $this->articleRepository->getArticlesForPage($paginator);
-        $this->template->articles = $articles;
-        $this->template->paginator = $paginator;
+        $this->getTemplate()->articles = $articles;
+        $this->getTemplate()->paginator = $paginator;
     }
 }

@@ -18,7 +18,7 @@ class UserFactory
         $this->passwords = $passwords;
     }
 
-    public function createFromDbRow(ActiveRow $user){
+    public function createFromDbRow(ActiveRow $user): User{
 
         try {
             return new User(

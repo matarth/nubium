@@ -14,21 +14,20 @@ use Nette\Security\SimpleIdentity;
 class Authenticator implements \Nette\Security\Authenticator
 {
 
-
     private UserRepository $userRepository;
+    private Passwords $passwords;
 
     public function __construct(UserRepository $userRepository, Passwords $passwords){
 
-        $this->passwords = $passwords;
         $this->userRepository = $userRepository;
+        $this->passwords = $passwords;
     }
 
     function authenticate(string $userEmail, string $password): IIdentity
     {
-        try {
-            $user = $this->userRepository->getUserByEmail($userEmail);
-        } catch (\Exception $e){
-            throw new AuthenticationException($e->getMessage());
+        $user = $this->userRepository->getUserByEmail($userEmail);
+        if ($user === null){
+            throw new AuthenticationException("User $userEmail not found");
         }
 
         if($this->passwords->verify($password, $user->getPassword())){
