@@ -14,7 +14,8 @@ final class RegistrationPresenter extends BasePresenter
     private UserRepository $userRepository;
     private UserFactory $userFactory;
 
-    public function __construct(UserRepository $userRepository, UserFactory $userFactory){
+    public function __construct(UserRepository $userRepository, UserFactory $userFactory)
+    {
 
         $this->userRepository = $userRepository;
         $this->userFactory = $userFactory;
@@ -36,7 +37,7 @@ final class RegistrationPresenter extends BasePresenter
     }
 
     /**
-     * @param mixed[] $data
+     * @param  mixed[] $data
      * @return void
      * @throws \App\Exception\UserNotFoundException
      * @throws \Nette\Application\AbortException
@@ -44,12 +45,10 @@ final class RegistrationPresenter extends BasePresenter
     public function formSuccess(RegistrationForm $form, array $data): void
     {
 
-        if(
-            Validators::isEmail($data['email']) &&
-            ($data['password1'] === $data['password2']) &&
-            $this->userRepository->getUserByEmail($data['email']) === null
-        )
-        {
+        if(Validators::isEmail($data['email']) 
+            && ($data['password1'] === $data['password2']) 
+            && $this->userRepository->getUserByEmail($data['email']) === null
+        ) {
             $this->userRepository->saveNewUser($this->userFactory->createFromRegistrationForm($form));
             $this->flashMessage('Uživatel uložen', 'info');
             $this->redirect('default');

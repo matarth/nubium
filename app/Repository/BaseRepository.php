@@ -9,7 +9,8 @@ abstract class BaseRepository
 
     protected Explorer $db;
 
-    public function __construct(Explorer $db){
+    public function __construct(Explorer $db)
+    {
 
         $this->db = $db;
     }

@@ -8,7 +8,7 @@ use Nette\Bootstrap\Configurator;
 
 class Bootstrap
 {
-	public static function boot(string $environment): Configurator
+    public static function boot(string $environment): Configurator
     {
         $configurator = new Configurator;
         $appDir = dirname(__DIR__);

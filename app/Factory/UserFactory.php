@@ -13,12 +13,14 @@ class UserFactory
 
     private Passwords $passwords;
 
-    public function __construct(Passwords $passwords){
+    public function __construct(Passwords $passwords)
+    {
 
         $this->passwords = $passwords;
     }
 
-    public function createFromDbRow(ActiveRow $user): User{
+    public function createFromDbRow(ActiveRow $user): User
+    {
 
         try {
             return new User(
@@ -36,7 +38,8 @@ class UserFactory
 
     }
 
-    public function createFromRegistrationForm(RegistrationForm $form): User {
+    public function createFromRegistrationForm(RegistrationForm $form): User
+    {
         $formData = $form->getHttpData();
         return new User(
             0,

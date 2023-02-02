@@ -13,13 +13,15 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter
 
     private Explorer $db;
 
-    public function __construct(Nette\Database\Explorer $db){
+    public function __construct(Nette\Database\Explorer $db)
+    {
         parent::__construct();
 
         $this->db = $db;
     }
 
-    public function renderDefault(): void{
+    public function renderDefault(): void
+    {
         dumpe(
             $this->db->table('user')->count()
         );

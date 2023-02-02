@@ -12,7 +12,8 @@ class UserRepository extends BaseRepository
 
     private UserFactory $userFactory;
 
-    public function __construct(Explorer $db, UserFactory $userFactory){
+    public function __construct(Explorer $db, UserFactory $userFactory)
+    {
 
         parent::__construct($db);
 
@@ -36,7 +37,8 @@ class UserRepository extends BaseRepository
         return $this->userFactory->createFromDbRow($user);
     }
 
-    public function saveNewUser(User $user): void{
+    public function saveNewUser(User $user): void
+    {
         $userArray = $user->toArray();
         unset($userArray['id']);
         $this->db->table('user')->insert($userArray);

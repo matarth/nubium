@@ -21,8 +21,7 @@ class Article implements EntityInterface
         string $text,
         DateTime $validSince,
         DateTime $created,
-    )
-    {
+    ) {
         $this->id = $id;
         $this->uuid = $uuid;
         $this->perex = $perex;

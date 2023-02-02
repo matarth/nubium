@@ -15,19 +15,19 @@ final class Environment
     {
         $env = getenv('PHP_ENV_MODE');
 
-        if(!is_string($env)){
+        if(!is_string($env)) {
             throw new \Exception("Invalid environment variable");
         }
 
         $this->environment = $env;
-        if(!in_array($this->environment, [self::dev, self::test])){
+        if(!in_array($this->environment, [self::dev, self::test])) {
             throw new \Exception("Invalid environment variable $this->environment");
         }
     }
 
     public static function getInstance(): ?self
     {
-        if(is_null(Environment::$instance)){
+        if(is_null(Environment::$instance)) {
             self::$instance = new Environment();
         }
 

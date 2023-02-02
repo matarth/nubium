@@ -10,7 +10,8 @@ class ArticlesPresenter extends BasePresenter
 
     private ArticleRepository $articleRepository;
 
-    public function __construct(ArticleRepository $articleRepository) {
+    public function __construct(ArticleRepository $articleRepository)
+    {
         parent::__construct();
         $this->articleRepository = $articleRepository;
     }

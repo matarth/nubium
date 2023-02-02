@@ -23,7 +23,7 @@ class User implements EntityInterface
         string $password, // hashed
         DateTime $lastOnline,
         DateTime $dateOfRegistration
-    ){
+    ) {
 
         $this->id = $id;
         $this->uuid = $uuid;

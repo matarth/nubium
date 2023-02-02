@@ -17,7 +17,8 @@ class Authenticator implements \Nette\Security\Authenticator
     private UserRepository $userRepository;
     private Passwords $passwords;
 
-    public function __construct(UserRepository $userRepository, Passwords $passwords){
+    public function __construct(UserRepository $userRepository, Passwords $passwords)
+    {
 
         $this->userRepository = $userRepository;
         $this->passwords = $passwords;
@@ -26,11 +27,11 @@ class Authenticator implements \Nette\Security\Authenticator
     function authenticate(string $userEmail, string $password): IIdentity
     {
         $user = $this->userRepository->getUserByEmail($userEmail);
-        if ($user === null){
+        if ($user === null) {
             throw new AuthenticationException("User $userEmail not found");
         }
 
-        if($this->passwords->verify($password, $user->getPassword())){
+        if($this->passwords->verify($password, $user->getPassword())) {
 
             return new SimpleIdentity(
                 $user->getId(),

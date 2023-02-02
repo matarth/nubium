@@ -44,7 +44,7 @@ class ArticleRepository extends BaseRepository
     {
         $ret = [];
         $articles = $this->db->table('article')
-            ->page(max(0,$paginator->getPage()), $paginator->getItemsPerPage())
+            ->page(max(0, $paginator->getPage()), $paginator->getItemsPerPage())
             ->order('validSince DESC')
             ->fetchAll();
 
