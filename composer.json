@@ -1,6 +1,6 @@
 {
-	"name": "nette/web-project",
-	"description": "Nette: Standard Web Project",
+	"name": "matarth/nubium-hire",
+	"description": "Hiring excercise for Nubium",
 	"keywords": ["nette"],
 	"type": "project",
 	"license": ["MIT", "BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
@@ -23,7 +23,8 @@
 	},
 	"require-dev": {
 		"nette/tester": "^2.3",
-		"symfony/thanks": "^1"
+		"symfony/thanks": "^1",
+		"phpstan/phpstan": "^1.9"
 	},
 	"autoload": {
 		"psr-4": {
