@@ -5,12 +5,17 @@ declare(strict_types=1);
 namespace App;
 
 use Nette\Bootstrap\Configurator;
+use Nette\Forms\Form;
 
 
 class Bootstrap
 {
 	public static function boot(): Configurator
 	{
+
+        Form::initialize();
+
+
 		$configurator = new Configurator;
 		$appDir = dirname(__DIR__);
 

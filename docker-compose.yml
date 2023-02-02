@@ -10,7 +10,6 @@ services:
     environment:
       MYSQL_DATABASE: nubium
       MYSQL_USER: root
-      MYSQL_PASSWORD: mata
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - ./docker/db:/var/lib/mysql
