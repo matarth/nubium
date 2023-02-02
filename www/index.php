@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
+use App\Environment;
+
 require __DIR__ . '/../vendor/autoload.php';
 
-$configurator = App\Bootstrap::boot();
+$configurator = App\Bootstrap::boot(Environment::getInstance()->getEnvironent());
 $container = $configurator->createContainer();
 $application = $container->getByType(Nette\Application\Application::class);
 $application->run();

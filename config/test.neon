@@ -1,0 +1,4 @@
+parameters:
+
+database:
+	dsn: "sqlite:%basePath%/tests/testDb.db"

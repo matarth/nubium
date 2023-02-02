@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Factory;
+
+use App\Entity\Article;
+use Nette\Database\Table\ActiveRow;
+
+class ArticleFactory
+{
+
+    public function createFromDbRow(ActiveRow $article){
+
+        return new Article(
+            $article->id,
+            $article->uuid,
+            $article->perex,
+            $article->text,
+            $article->validSince,
+            $article->created
+        );
+    }
+}

@@ -13,4 +13,7 @@ services:
 	- App\Router\RouterFactory::createRouter
 
 	- App\Repository\UserRepository
+	- App\Repository\ArticleRepository
+
 	- App\Factory\UserFactory
+	- App\Factory\ArticleFactory

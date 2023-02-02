@@ -7,15 +7,15 @@ use App\Exception\UserNotFoundException;
 use App\Factory\UserFactory;
 use Nette\Database\Explorer;
 
-class UserRepository
+class UserRepository extends BaseRepository
 {
 
-    private Explorer $db;
     private UserFactory $userFactory;
 
     public function __construct(Explorer $db, UserFactory $userFactory){
 
-        $this->db = $db;
+        parent::__construct($db);
+
         $this->userFactory = $userFactory;
     }
 

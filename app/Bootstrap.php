@@ -5,34 +5,29 @@ declare(strict_types=1);
 namespace App;
 
 use Nette\Bootstrap\Configurator;
-use Nette\Forms\Form;
-
 
 class Bootstrap
 {
-	public static function boot(): Configurator
-	{
-
-        Form::initialize();
-
-
-		$configurator = new Configurator;
-		$appDir = dirname(__DIR__);
+	public static function boot(string $environment): Configurator
+    {
+        $configurator = new Configurator;
+        $appDir = dirname(__DIR__);
 
         $configurator->setDebugMode(true);
-		$configurator->enableTracy($appDir . '/log');
+        $configurator->enableTracy($appDir . '/log');
 
-		$configurator->setTimeZone('Europe/Prague');
-		$configurator->setTempDirectory($appDir . '/temp');
+        $configurator->setTimeZone('Europe/Prague');
+        $configurator->setTempDirectory($appDir . '/temp');
 
-		$configurator->createRobotLoader()
-			->addDirectory(__DIR__)
-			->register();
+        $configurator->createRobotLoader()
+            ->addDirectory(__DIR__)
+            ->register();
 
-		$configurator->addConfig($appDir . '/config/common.neon');
-		$configurator->addConfig($appDir . '/config/services.neon');
-		$configurator->addConfig($appDir . '/config/local.neon');
+        $configurator->addParameters(['basePath' => $appDir]);
+        $configurator->addConfig($appDir . '/config/common.neon');
+        $configurator->addConfig($appDir . '/config/services.neon');
+        $configurator->addConfig($appDir . "/config/$environment.neon");
 
-		return $configurator;
-	}
+        return $configurator;
+    }
 }

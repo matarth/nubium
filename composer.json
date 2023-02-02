@@ -24,7 +24,9 @@
 	"require-dev": {
 		"nette/tester": "^2.3",
 		"symfony/thanks": "^1",
-		"phpstan/phpstan": "^1.9"
+		"phpstan/phpstan": "^1.9",
+		"codeception/codeception": "^5.0",
+		"codeception/module-phpbrowser": "^3.0"
 	},
 	"autoload": {
 		"psr-4": {

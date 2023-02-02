@@ -6,11 +6,9 @@ use App\Factory\UserFactory;
 use App\Form\RegistrationForm;
 use App\Repository\UserRepository;
 use Nette\Application\UI\Form;
-use Nette\Application\UI\Presenter;
-use Nette\Utils\Strings;
 use Nette\Utils\Validators;
 
-final class RegistrationPresenter extends Presenter
+final class RegistrationPresenter extends BasePresenter
 {
 
     private UserRepository $userRepository;
@@ -20,6 +18,12 @@ final class RegistrationPresenter extends Presenter
 
         $this->userRepository = $userRepository;
         $this->userFactory = $userFactory;
+    }
+
+    public function startup()
+    {
+        parent::startup();
+        Form::initialize();
     }
 
     protected function createComponentRegistrationForm(): Form

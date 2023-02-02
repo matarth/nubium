@@ -1,0 +1,7 @@
+{block content}
+
+{foreach $articles as $article}
+    {include 'articleDetail.latte' ,article => $article}
+{/foreach}
+
+{include '../paginator.latte', paginator => $paginator}

@@ -35,6 +35,8 @@ services:
     links:
       - db
     working_dir: /code
+    environment:
+      PHP_ENV_MODE: dev
 
 volumes:
   db:
