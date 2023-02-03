@@ -33,7 +33,7 @@ class ArticleRepository extends BaseRepository
             $ret[] = $this->articleFactory->createFromDbRow($article);
         }
 
-        return $ret;
+        return $this->returnVotedArticles($ret);
     }
 
     /**
@@ -51,11 +51,35 @@ class ArticleRepository extends BaseRepository
             $ret[] = $this->articleFactory->createFromDbRow($article);
         }
 
-        return $ret;
+        return $this->returnVotedArticles($ret);
     }
 
     public function getArticlesCount(): int
     {
-        return $this->db->table('article')->count();
+        return $this->db->table('article')->count('id');
+    }
+
+    /**
+     * @param Article[] $articles
+     * @return Article[]
+     */
+    private function returnVotedArticles(array $articles): array
+    {
+        $articleIds = array_map(function(Article $article){
+           return $article->getId();
+        }, $articles);
+
+        $votes = $this->db
+            ->table('vote')
+            ->select('article_id, SUM(plus) score')
+            ->where('article_id', $articleIds)
+            ->group('article_id')
+            ->fetchAssoc('article_id=score');
+
+        foreach($articles as $article){
+            $article->setScore($votes[$article->getId()] ?? 0);
+        }
+
+        return $articles;
     }
 }

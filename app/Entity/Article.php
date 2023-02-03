@@ -14,6 +14,8 @@ class Article implements EntityInterface
     private DateTime $validSince;
     private DateTime $created;
 
+    private int $score;
+
     public function __construct(
         int $id,
         string $uuid,
@@ -76,6 +78,22 @@ class Article implements EntityInterface
     public function getCreated(): DateTime
     {
         return $this->created;
+    }
+
+    /**
+     * @return int
+     */
+    public function getScore(): int
+    {
+        return $this->score;
+    }
+
+    /**
+     * @param int $score
+     */
+    public function setScore(int $score): void
+    {
+        $this->score = $score;
     }
 
     public function toArray(): array

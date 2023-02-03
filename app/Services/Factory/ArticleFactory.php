@@ -11,7 +11,7 @@ class ArticleFactory
     public function createFromDbRow(ActiveRow $article): Article
     {
 
-        return new Article(
+        $article =  new Article(
             $article->id,
             $article->uuid,
             $article->perex,
@@ -19,5 +19,7 @@ class ArticleFactory
             $article->validSince,
             $article->created
         );
+
+        return $article;
     }
 }
