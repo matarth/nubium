@@ -2,7 +2,8 @@
 
 namespace App\Presenters;
 
-use App\Components\ChangePasswordForm;
+use App\Components\ChangePasswordForm\ChangePasswordForm;
+use App\Components\ChangePasswordForm\ChangePasswordFormFactory;
 use App\Components\LoginCheck\LoginCheckFactory;
 use App\Entity\User;
 use App\Repository\UserRepository;
@@ -14,12 +15,14 @@ class SettingsPresenter extends BasePresenter
     private User $userEntity;
     private Passwords $passwords;
     private UserRepository $userRepository;
+    private ChangePasswordFormFactory $changePasswordFormFactory;
 
-    public function __construct(LoginCheckFactory $loginCheckFactory, Passwords $passwords, UserRepository $userRepository)
+    public function __construct(LoginCheckFactory $loginCheckFactory, Passwords $passwords, UserRepository $userRepository, ChangePasswordFormFactory $changePasswordFormFactory)
     {
         parent::__construct($loginCheckFactory);
         $this->passwords = $passwords;
         $this->userRepository = $userRepository;
+        $this->changePasswordFormFactory = $changePasswordFormFactory;
     }
 
     public function startup()
@@ -40,29 +43,9 @@ class SettingsPresenter extends BasePresenter
     }
 
     public function createComponentChangePasswordForm(){
-        $form = new ChangePasswordForm();
-        $form->onSuccess[] = [$this, 'onSuccess'];
-
-        return $form;
-    }
-
-    public function onSuccess(ChangePasswordForm $form, $data): bool{
-
-        if($data['new_password1'] !== $data['new_password2']){
-            $this->flashMessage('Hesla se neshodují', 'error');
-            return false;
-        }
-
-        if(!$this->passwords->verify($data['old_password'] . $this->userEntity->getEmail(), $this->userEntity->getPassword())){
-            $this->flashMessage('Neplatné heslo', 'error');
-            return false;
-        }
-
-        $newPasswordHash = $this->passwords->hash($data['new_password1'] . $this->userEntity->getEmail());
-        $this->userEntity->setPassword($newPasswordHash);
-        $this->userRepository->updateUser($this->userEntity);
-
-        $this->flashMessage('Heslo úspěšně změneno. ' . $newPasswordHash, 'success');
-        return true;
+        return $this->changePasswordFormFactory->create();
+//        $form = new ChangePasswordForm();
+//        $form->onSuccess[] = [$this, 'onSuccess'];
+//        return $form;
     }
 }
