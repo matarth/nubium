@@ -3,61 +3,23 @@
 namespace App\Presenters;
 
 use App\Components\LoginCheck\LoginCheckFactory;
-use App\Factory\UserFactory;
-use App\Components\RegistrationForm;
-use App\Repository\UserRepository;
+use App\Components\RegistrationForm\RegistrationFormFactory;
 use Nette\Application\UI\Form;
-use Nette\Utils\Validators;
 
 final class RegistrationPresenter extends BasePresenter
 {
 
-    private UserRepository $userRepository;
-    private UserFactory $userFactory;
+    private RegistrationFormFactory $registrationFormFactory;
 
-    public function __construct(LoginCheckFactory $loginCheckFactory, UserRepository $userRepository, UserFactory $userFactory)
+    public function __construct(LoginCheckFactory $loginCheckFactory, RegistrationFormFactory $registrationFormFactory)
     {
         parent::__construct($loginCheckFactory);
-        $this->userRepository = $userRepository;
-        $this->userFactory = $userFactory;
-    }
-
-    public function startup()
-    {
-        parent::startup();
-        Form::initialize();
+        $this->loginCheckFactory = $loginCheckFactory;
+        $this->registrationFormFactory = $registrationFormFactory;
     }
 
     protected function createComponentRegistrationForm(): Form
     {
-
-        $form = new RegistrationForm();
-        $form->onSuccess[] = [$this, 'formSuccess'];
-        return $form;
-
+        return $this->registrationFormFactory->create();
     }
-
-    /**
-     * @param  mixed[] $data
-     * @return void
-     * @throws \App\Exception\UserNotFoundException
-     * @throws \Nette\Application\AbortException
-     */
-    public function formSuccess(RegistrationForm $form, array $data): void
-    {
-
-        if(Validators::isEmail($data['email']) 
-            && ($data['password1'] === $data['password2']) 
-            && $this->userRepository->getUserByEmail($data['email']) === null
-        ) {
-            $this->userRepository->saveNewUser($this->userFactory->createFromRegistrationForm($form));
-            $this->flashMessage('Uživatel uložen', 'info');
-            $this->redirect('default');
-        }
-        else{
-            $this->flashMessage('Nepodařilo se uložit uživatele');
-        }
-
-    }
-
 }
