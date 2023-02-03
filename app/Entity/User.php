@@ -11,7 +11,6 @@ class User implements EntityInterface
     private string $uuid;
     private string $name;
     private string $password;
-    private DateTime $lastOnline;
     private DateTime $dateOfRegistration;
     private string $email;
 
@@ -21,7 +20,6 @@ class User implements EntityInterface
         string $name,
         string $email,
         string $password, // hashed
-        DateTime $lastOnline,
         DateTime $dateOfRegistration
     ) {
 
@@ -29,7 +27,6 @@ class User implements EntityInterface
         $this->uuid = $uuid;
         $this->name = $name;
         $this->password = $password;
-        $this->lastOnline = $lastOnline;
         $this->dateOfRegistration = $dateOfRegistration;
         $this->email = $email;
     }
@@ -69,14 +66,6 @@ class User implements EntityInterface
     /**
      * @return DateTime
      */
-    public function getLastOnline(): DateTime
-    {
-        return $this->lastOnline;
-    }
-
-    /**
-     * @return DateTime
-     */
     public function getDateOfRegistration(): DateTime
     {
         return $this->dateOfRegistration;
@@ -106,7 +95,6 @@ class User implements EntityInterface
             'name' => $this->getName(),
             'password' => $this->getPassword(),
             'email' => $this->getEmail(),
-            'last_online' => $this->getLastOnline(),
             'date_of_registration' => $this->getDateOfRegistration(),
         ];
     }

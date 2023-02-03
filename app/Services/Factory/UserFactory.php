@@ -29,7 +29,6 @@ class UserFactory
                 $user->name,
                 $user->email,
                 $user->password,
-                $user->last_online,
                 $user->date_of_registration
             );
         } catch(\Exception $e){
@@ -47,7 +46,6 @@ class UserFactory
             $formData['name'],
             $formData['email'],
             $this->passwords->hash($formData['password1'] . $formData['email']),
-            new DateTime(),
             new DateTime()
         );
     }
