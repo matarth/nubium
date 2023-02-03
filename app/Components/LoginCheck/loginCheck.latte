@@ -2,6 +2,7 @@
     <div n:if="$isLoggedIn">
         <p>Přihlášený jako: {$user->getName()}</p>
         <a href="{plink Settings:default}">Nastavení</a>
+        <a href="{plink Logout:default}">Odhlásit</a>
     </div>
 
     <a n:if="!$isLoggedIn" href="{plink Login:default}">Přihlásit</a>
