@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Components\LoginForm;
+namespace App\Services\Components\LoginForm;
 
 use Nette\Application\UI\Form;
 use Nette\Security\User;

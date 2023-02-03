@@ -2,8 +2,8 @@
 
 namespace App\Presenters;
 
-use App\Components\LoginCheck\LoginCheck;
-use App\Components\LoginCheck\LoginCheckFactory;
+use App\Services\Components\LoginCheck\LoginCheck;
+use App\Services\Components\LoginCheck\LoginCheckFactory;
 use Nette\Application\UI\Presenter;
 
 class BasePresenter extends Presenter

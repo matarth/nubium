@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Factory;
+namespace App\Services\Factory;
 
-use App\Components\RegistrationForm\RegistrationForm;
 use App\Entity\User;
+use App\Services\Components\RegistrationForm\RegistrationForm;
 use DateTime;
 use Nette\Database\Table\ActiveRow;
 use Nette\Security\Passwords;

@@ -2,8 +2,8 @@
 
 namespace App\Presenters;
 
-use App\Components\LoginCheck\LoginCheckFactory;
-use App\Repository\ArticleRepository;
+use App\Services\Components\LoginCheck\LoginCheckFactory;
+use App\Services\Repository\ArticleRepository;
 use Nette\Utils\Paginator;
 
 class ArticlesPresenter extends BasePresenter

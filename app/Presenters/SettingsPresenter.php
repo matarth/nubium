@@ -2,11 +2,10 @@
 
 namespace App\Presenters;
 
-use App\Components\ChangePasswordForm\ChangePasswordForm;
-use App\Components\ChangePasswordForm\ChangePasswordFormFactory;
-use App\Components\LoginCheck\LoginCheckFactory;
 use App\Entity\User;
-use App\Repository\UserRepository;
+use App\Services\Components\ChangePasswordForm\ChangePasswordFormFactory;
+use App\Services\Components\LoginCheck\LoginCheckFactory;
+use App\Services\Repository\UserRepository;
 use Nette\Security\Passwords;
 
 class SettingsPresenter extends BasePresenter

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Components\RegistrationForm;
+namespace App\Services\Components\RegistrationForm;
 
-use App\Factory\UserFactory;
-use App\Repository\UserRepository;
+use App\Services\Factory\UserFactory;
+use App\Services\Repository\UserRepository;
 use Nette\Application\UI\Form;
 use Nette\Utils\Validators;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Components\ChangePasswordForm;
+namespace App\Services\Components\ChangePasswordForm;
 
-use App\Repository\UserRepository;
+use App\Services\Repository\UserRepository;
 use Nette\Application\UI\Form;
 use Nette\Security\AuthenticationException;
 use Nette\Security\Passwords;

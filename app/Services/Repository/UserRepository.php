@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repository;
+namespace App\Services\Repository;
 
 use App\Entity\User;
 use App\Exception\UserNotFoundException;
-use App\Factory\UserFactory;
+use App\Services\Factory\UserFactory;
 use Nette\Database\Explorer;
 
 class UserRepository extends BaseRepository

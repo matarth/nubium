@@ -2,8 +2,8 @@
 
 namespace App\Presenters;
 
-use App\Components\LoginCheck\LoginCheckFactory;
-use App\Components\RegistrationForm\RegistrationFormFactory;
+use App\Services\Components\LoginCheck\LoginCheckFactory;
+use App\Services\Components\RegistrationForm\RegistrationFormFactory;
 use Nette\Application\UI\Form;
 
 final class RegistrationPresenter extends BasePresenter

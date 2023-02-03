@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Components\LoginCheck;
+namespace App\Services\Components\LoginCheck;
 
 use Nette\Security\User;
 

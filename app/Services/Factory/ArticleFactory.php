@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Factory;
+namespace App\Services\Factory;
 
 use App\Entity\Article;
 use Nette\Database\Table\ActiveRow;

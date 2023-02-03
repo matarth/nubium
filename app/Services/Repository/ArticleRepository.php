@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repository;
+namespace App\Services\Repository;
 
 use App\Entity\Article;
-use App\Factory\ArticleFactory;
+use App\Services\Factory\ArticleFactory;
 use Nette\Database\Explorer;
 use Nette\Utils\Paginator;
 

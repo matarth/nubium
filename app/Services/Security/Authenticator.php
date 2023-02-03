@@ -1,12 +1,9 @@
 <?php
 
-namespace App\Security;
+namespace App\Services\Security;
 
-use App\Exception\AppException;
-use App\Repository\UserRepository;
-use Nette\Database\Explorer;
+use App\Services\Repository\UserRepository;
 use Nette\Security\AuthenticationException;
-use Nette\Security\IdentityHandler;
 use Nette\Security\IIdentity;
 use Nette\Security\Passwords;
 use Nette\Security\SimpleIdentity;
