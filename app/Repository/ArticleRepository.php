@@ -5,7 +5,6 @@ namespace App\Repository;
 use App\Entity\Article;
 use App\Factory\ArticleFactory;
 use Nette\Database\Explorer;
-use Nette\Database\Table\ActiveRow;
 use Nette\Utils\Paginator;
 
 class ArticleRepository extends BaseRepository

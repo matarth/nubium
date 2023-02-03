@@ -43,4 +43,12 @@ class UserRepository extends BaseRepository
         unset($userArray['id']);
         $this->db->table('user')->insert($userArray);
     }
+
+    public function updateUser(User $user): void
+    {
+        $this->db
+            ->table('user')
+            ->where('id', $user->getId())
+            ->update($user->toArray());
+    }
 }

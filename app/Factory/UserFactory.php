@@ -3,7 +3,7 @@
 namespace App\Factory;
 
 use App\Entity\User;
-use App\Form\RegistrationForm;
+use App\Components\RegistrationForm;
 use DateTime;
 use Nette\Database\Table\ActiveRow;
 use Nette\Security\Passwords;

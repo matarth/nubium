@@ -90,6 +90,14 @@ class User implements EntityInterface
         return $this->email;
     }
 
+    /**
+     * @param string $password
+     */
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
+    }
+
     public function toArray(): array
     {
         return [

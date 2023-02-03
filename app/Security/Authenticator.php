@@ -28,10 +28,10 @@ class Authenticator implements \Nette\Security\Authenticator
     {
         $user = $this->userRepository->getUserByEmail($userEmail);
         if ($user === null) {
-            throw new AuthenticationException("User $userEmail not found");
+            throw new AuthenticationException("User $userEmail not found", 401);
         }
 
-        if($this->passwords->verify($password, $user->getPassword())) {
+        if($this->passwords->verify($password . $userEmail, $user->getPassword())) {
 
             return new SimpleIdentity(
                 $user->getId(),
@@ -40,7 +40,7 @@ class Authenticator implements \Nette\Security\Authenticator
             );
         }
         else{
-            throw new AuthenticationException("Bad login password combination");
+            throw new AuthenticationException("Bad login password combination", 401);
         }
     }
 }

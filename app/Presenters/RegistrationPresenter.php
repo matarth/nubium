@@ -2,8 +2,9 @@
 
 namespace App\Presenters;
 
+use App\Components\LoginCheck\LoginCheckFactory;
 use App\Factory\UserFactory;
-use App\Form\RegistrationForm;
+use App\Components\RegistrationForm;
 use App\Repository\UserRepository;
 use Nette\Application\UI\Form;
 use Nette\Utils\Validators;
@@ -14,9 +15,9 @@ final class RegistrationPresenter extends BasePresenter
     private UserRepository $userRepository;
     private UserFactory $userFactory;
 
-    public function __construct(UserRepository $userRepository, UserFactory $userFactory)
+    public function __construct(LoginCheckFactory $loginCheckFactory, UserRepository $userRepository, UserFactory $userFactory)
     {
-
+        parent::__construct($loginCheckFactory);
         $this->userRepository = $userRepository;
         $this->userFactory = $userFactory;
     }

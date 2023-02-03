@@ -2,6 +2,7 @@
 
 namespace App\Presenters;
 
+use App\Components\LoginCheck\LoginCheckFactory;
 use App\Repository\ArticleRepository;
 use Nette\Utils\Paginator;
 
@@ -10,9 +11,11 @@ class ArticlesPresenter extends BasePresenter
 
     private ArticleRepository $articleRepository;
 
-    public function __construct(ArticleRepository $articleRepository)
+    public function __construct(
+        LoginCheckFactory $loginCheckFactory,
+        ArticleRepository $articleRepository)
     {
-        parent::__construct();
+        parent::__construct($loginCheckFactory);
         $this->articleRepository = $articleRepository;
     }
 

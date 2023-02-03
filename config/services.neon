@@ -10,6 +10,7 @@ services:
 
 	security.passwords: Nette\Security\Passwords(::PASSWORD_BCRYPT, [cost: 12])
 
+	- App\Security\Authenticator
 	- App\Router\RouterFactory::createRouter
 
 	- App\Repository\UserRepository
@@ -17,3 +18,5 @@ services:
 
 	- App\Factory\UserFactory
 	- App\Factory\ArticleFactory
+
+	- App\Components\LoginCheck\LoginCheckFactory
