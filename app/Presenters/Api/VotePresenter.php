@@ -27,6 +27,7 @@ class VotePresenter extends Presenter
 
     public function startup()
     {
+        parent::startup();
         if(!$this->user->isLoggedIn()){
             throw new UnauthorizedException("Unauthorized");
         }

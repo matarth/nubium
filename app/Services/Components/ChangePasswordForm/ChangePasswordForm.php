@@ -52,7 +52,7 @@ class ChangePasswordForm extends Form
         $user->setPassword($newPasswordHash);
         $this->userRepository->updateUser($user);
 
-        $presenter->flashMessage('Heslo úspěšně změneno. ', 'success');
+        $presenter->flashMessage('Heslo úspěšně změneno. ', 'info');
         return true;
     }
 }

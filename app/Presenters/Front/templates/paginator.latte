@@ -1,13 +1,13 @@
 <div class="paginator">
-<a n:if="!$paginator->isFirst()" n:href="this $paginator->getPage()-1"><</a>
+    <a class="page-arrow" n:if="!$paginator->isFirst()" n:href="this $paginator->getPage()-1"><</a>
 
-{for $ii = $paginator->getFirstPage(); $ii <= $paginator->getLastPage(); $ii++}
-    {if $paginator->getPage() == $ii}
-        {$ii}
-    {else}
-        <a n:href="this $ii">{$ii}</a>
-    {/if}
-{/for}
+    {for $ii = $paginator->getFirstPage(); $ii <= $paginator->getLastPage(); $ii++}
+        {if $paginator->getPage() == $ii}
+            <span class="current">{$ii}</span>
+        {else}
+            <a class="page-number" n:href="this $ii">{$ii}</a>
+        {/if}
+    {/for}
 
-<a n:if="!$paginator->isLast()" n:href="this $paginator->getPage()+1">></a>
+    <a class="page-arrow" n:if="!$paginator->isLast()" n:href="this $paginator->getPage()+1">></a>
 </div>

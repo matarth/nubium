@@ -22,7 +22,6 @@ class ArticlesPresenter extends BasePresenter
 
     public function renderDefault(int $page = 1): void
     {
-        dd($this->link('Api:Vote:default'));
         $paginator = new Paginator();
         $paginator->setItemCount($this->articleRepository->getArticlesCount());
         $paginator->setItemsPerPage(self::itemsPerPage);
@@ -31,5 +30,6 @@ class ArticlesPresenter extends BasePresenter
         $articles = $this->articleRepository->getArticlesForPage($paginator);
         $this->getTemplate()->articles = $articles;
         $this->getTemplate()->paginator = $paginator;
+        $this->getTemplate()->voteLink = $this->link("Api:Vote:default");
     }
 }

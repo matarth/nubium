@@ -10,15 +10,14 @@
 </head>
 
 <body>
+    <div class="app">
+        <a n:href="Articles:default">Domů</a>
+        {control loginCheck}
+        {include content}
 
-	{control loginCheck}
-
-	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
-
-	{include content}
-
-	{block scripts}
+        <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+	</div>
+	{block scripts}{/block}
 	<script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
-	{/block}
 </body>
 </html>

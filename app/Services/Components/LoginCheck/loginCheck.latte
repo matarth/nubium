@@ -1,9 +1,10 @@
 <div class="loginCheck">
     <div n:if="$isLoggedIn">
-        <p>Přihlášený jako: {$user->getName()}</p>
-        <a href="{plink Settings:default}">Nastavení</a>
-        <a href="{plink Logout:default}">Odhlásit</a>
+        <p>Uživatel: {$user->getName()}</p>
+        <p><a href="{plink Settings:default}">Nastavení</a><p>
+        <p><a href="{plink Logout:default}">Odhlásit</a><p>
     </div>
 
-    <a n:if="!$isLoggedIn" href="{plink Login:default}">Přihlásit</a>
+    <p><a n:if="!$isLoggedIn" href="{plink Login:default}">Přihlásit</a></p>
+    <p><a n:if="!$isLoggedIn" href="{plink Registration:default}">Registrovat</a></p>
 </div>

@@ -1,7 +1,14 @@
 {block content}
+    {foreach $articles as $article}
+        {include 'articleDetail.latte' ,article => $article, voteLink => $voteLink}
+    {/foreach}
 
-{foreach $articles as $article}
-    {include 'articleDetail.latte' ,article => $article}
-{/foreach}
+    {include '../paginator.latte', paginator => $paginator}
 
-{include '../paginator.latte', paginator => $paginator}
+{/block}
+
+
+{block scripts}
+    <script src="/js/vote.js"></script>
+{/block}
+

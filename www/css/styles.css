@@ -1,7 +1,22 @@
 body {
-    background: #c9ab81;
-    text-align: center;
+    background: #525252;
+}
+
+.app {
+    padding: 2px;
+    background: #e3e3e3;
+    width: 30%;
     margin: auto;
+    min-height: 800px;
+    text-align: center;
+}
+
+.loginCheck {
+    padding: 5px;
+    background: #9be1e1;
+    box-shadow: rgba(87, 87, 87, 0.44) 2px 5px 5px;
+    border-radius: 2px;
+    text-align: right;
 }
 
 .article {
@@ -9,6 +24,36 @@ body {
     padding: 10px;
     border: 2px solid black;
     border-radius: 5px;
-    width: 50%;
     background: #b2b2b2;
+}
+
+.flash {
+    top: 10px;
+    left: 10px;
+    position: relative;
+    margin: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    max-width: 20%;
+}
+
+.flash.info {
+    background: lightgreen;
+}
+
+.flash.error {
+    background: lightcoral;
+}
+
+.paginator .page-number,.current{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.paginator .page-number,.page-arrow {
+    text-decoration: none;
+}
+
+.paginator .current {
+    color: #00a6ff;
 }

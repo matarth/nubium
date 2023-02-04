@@ -75,7 +75,7 @@ class ArticleRepository extends BaseRepository
 
         $votes = $this->db
             ->table('vote')
-            ->select('article_id, SUM(plus) score')
+            ->select('article_id, SUM(score) score')
             ->where('article_id', $articleIds)
             ->group('article_id')
             ->fetchAssoc('article_id=score');

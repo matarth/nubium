@@ -45,7 +45,7 @@ class RegistrationForm extends Form
             $presenter->redirect('Login:default');
         }
         else{
-            $presenter->flashMessage('Nepodařilo se uložit uživatele');
+            $presenter->flashMessage('Nepodařilo se uložit uživatele', 'error');
         }
     }
 
