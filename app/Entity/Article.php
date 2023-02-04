@@ -14,6 +14,7 @@ class Article implements EntityInterface
     private DateTime $validSince;
     private DateTime $created;
 
+    private bool $public;
     private int $score;
 
     public function __construct(
@@ -23,6 +24,7 @@ class Article implements EntityInterface
         string $text,
         DateTime $validSince,
         DateTime $created,
+        bool $public,
     ) {
         $this->id = $id;
         $this->uuid = $uuid;
@@ -30,6 +32,7 @@ class Article implements EntityInterface
         $this->text = $text;
         $this->validSince = $validSince;
         $this->created = $created;
+        $this->public = $public;
     }
 
     /**
@@ -81,6 +84,14 @@ class Article implements EntityInterface
     }
 
     /**
+     * @return bool
+     */
+    public function isPublic(): bool
+    {
+        return $this->public;
+    }
+
+    /**
      * @return int
      */
     public function getScore(): int
@@ -105,6 +116,7 @@ class Article implements EntityInterface
             'text' => $this->getText(),
             'validSince' => $this->getValidSince()->format('Y-m-d H:i:s'),
             'created' => $this->getCreated()->format('Y-m-d H:i:s'),
+            'public' => $this->isPublic()
         ];
     }
 }

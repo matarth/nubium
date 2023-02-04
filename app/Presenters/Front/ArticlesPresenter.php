@@ -47,7 +47,7 @@ class ArticlesPresenter extends BasePresenter
         $paginator->setItemsPerPage(self::itemsPerPage);
         $paginator->setPage($page);
 
-        $articles = $this->articleRepository->getVotedArticles2($paginator, $order, $direction);
+        $articles = $this->articleRepository->getArticlesForPage($paginator, $order, $direction);
         $this->getTemplate()->articles = $articles;
         $this->getTemplate()->paginator = $paginator;
         $this->getTemplate()->voteLink = $this->link("Api:Vote:default");

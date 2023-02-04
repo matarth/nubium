@@ -18,7 +18,7 @@ function vote(articleUuid, score, link){
         if(xhttp.status === 200){
             response = JSON.parse(xhttp.response);
             const element = document.querySelector(`#article${articleUuid} .score`);
-            element.innerHTML = response.articleScore;
+            element.innerHTML = 'Hodnocení:' + response.articleScore;
             addFlashMessage('Děkujeme za Váš hlas', 'info');
         }
         else{

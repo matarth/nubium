@@ -15,7 +15,7 @@ class UserRepository extends BaseRepository
     public function __construct(Explorer $db, UserFactory $userFactory)
     {
 
-        parent::__construct($db);
+        parent::__construct($db->table('user'));
 
         $this->userFactory = $userFactory;
     }
@@ -26,7 +26,6 @@ class UserRepository extends BaseRepository
     public function getUserByEmail(string $email): ?User
     {
         $user = $this->db
-            ->table('user')
             ->where('email', $email)
             ->fetch();
 
@@ -41,13 +40,12 @@ class UserRepository extends BaseRepository
     {
         $userArray = $user->toArray();
         unset($userArray['id']);
-        $this->db->table('user')->insert($userArray);
+        $this->db->insert($userArray);
     }
 
     public function updateUser(User $user): void
     {
         $this->db
-            ->table('user')
             ->where('id', $user->getId())
             ->update($user->toArray());
     }

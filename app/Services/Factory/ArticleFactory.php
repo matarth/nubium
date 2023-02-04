@@ -18,6 +18,7 @@ class ArticleFactory
             $article->text,
             $article->validSince,
             $article->created,
+            $article->public
         );
 
         $articleEntity->setScore($article?->score ?? 0);

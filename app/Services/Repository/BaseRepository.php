@@ -2,16 +2,15 @@
 
 namespace App\Services\Repository;
 
-use Nette\Database\Explorer;
+use Nette\Database\Table\Selection;
 
 abstract class BaseRepository
 {
 
-    protected Explorer $db;
+    protected Selection $db;
 
-    public function __construct(Explorer $db)
+    public function __construct(Selection $db)
     {
-
         $this->db = $db;
     }
 
