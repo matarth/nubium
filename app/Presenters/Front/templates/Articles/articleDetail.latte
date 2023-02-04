@@ -1,7 +1,8 @@
 <div id="article{$article->getUuid()}" class="article">
     <div class="perex">{$article->getPerex()}</div>
+    <div class="text">{$article->getValidSince()->format('d.m.Y')}</div>
     <div class="text">{$article->getText()}</div>
-    <div class="score">{$article->getScore()}</div>
+    <div class="score">Hodnocení: {$article->getScore()}</div>
     <div class="voting">
         <button n:if="$user->isLoggedIn()" onClick="vote({$article->getUuid()}, 1, {$voteLink})">+1</button>
         <button n:if="$user->isLoggedIn()" onClick="vote({$article->getUuid()}, -1, {$voteLink})">-1</button>

@@ -39,12 +39,12 @@ class ArticleRepository extends BaseRepository
     /**
      * @return Article[]
      */
-    public function getArticlesForPage(Paginator $paginator): array
+    public function getArticlesForPage(Paginator $paginator, string $order = 'validSince', string $direction = 'DESC'): array
     {
         $ret = [];
-        $articles = $this->db->table('article')
+        $articles = $this->db->table('article, SUM(vote.score)')
             ->page(max(0, $paginator->getPage()), $paginator->getItemsPerPage())
-            ->order('validSince DESC')
+            ->order("$order $direction")
             ->fetchAll();
 
         foreach($articles as $article){
@@ -63,6 +63,44 @@ class ArticleRepository extends BaseRepository
         return $this->articleFactory->createFromDbRow($this->db->table('article')->where('uuid', $articleUuid)->fetch());
     }
 
+    public function getVotedArticles(Paginator $paginator, string $order = 'validSince', string $direction = 'DESC'): array {
+        $ret = [];
+        $articles = $this->db->query(
+            "
+                    SELECT * from article a LEFT JOIN (SELECT article_id, SUM(score) score FROM vote GROUP BY article_id) sc
+                    ON a.id = sc.article_id ORDER BY ? ? LIMIT ?,?
+                ",
+            $order,
+            $direction,
+            $paginator->getItemsPerPage() * $paginator->getPage()-1,
+            $paginator->getItemsPerPage()
+        )->fetchAll();
+
+        foreach($articles as $article){
+            $ret[] = $this->articleFactory->createFromDbRow($article);
+        }
+
+        return $ret;
+    }
+
+
+    public function getVotedArticles2(Paginator $paginator, string $order = 'validSince', string $direction = 'DESC'): array {
+        $ret = [];
+        $articles = $this->db->table('article')
+            ->select('article.*, SUM(IFNULL(:vote.score, 0)) score')
+            ->group('article.id')
+            ->page(max(0, $paginator->getPage()), $paginator->getItemsPerPage())
+            ->order("$order $direction")
+            ->fetchAll();
+
+        foreach($articles as $article){
+            $ret[] = $this->articleFactory->createFromDbRow($article);
+        }
+
+        return $ret;
+    }
+
+
     /**
      * @param Article[] $articles
      * @return Article[]
@@ -75,7 +113,7 @@ class ArticleRepository extends BaseRepository
 
         $votes = $this->db
             ->table('vote')
-            ->select('article_id, SUM(score) score')
+            ->select('article_id')
             ->where('article_id', $articleIds)
             ->group('article_id')
             ->fetchAssoc('article_id=score');

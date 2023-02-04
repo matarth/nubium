@@ -5,7 +5,8 @@ body {
 .app {
     padding: 2px;
     background: #e3e3e3;
-    width: 30%;
+    min-width: 400px;
+    max-width: 40%;
     margin: auto;
     min-height: 800px;
     text-align: center;
@@ -59,7 +60,8 @@ body {
 }
 
 .perex {
-    margin: 0 0 3px 3px;
+    text-align: center;
+    margin-bottom: 3px;
     font-weight: bold;
 }
 
@@ -69,4 +71,8 @@ body {
 
 .article {
     text-align: left;
+}
+
+.sort {
+    margin: 20px;
 }

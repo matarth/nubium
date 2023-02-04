@@ -3,23 +3,25 @@
 namespace App\Services\Factory;
 
 use App\Entity\Article;
-use Nette\Database\Table\ActiveRow;
+use Nette\Database\IRow;
 
 class ArticleFactory
 {
 
-    public function createFromDbRow(ActiveRow $article): Article
+    public function createFromDbRow(IRow $article): Article
     {
 
-        $article =  new Article(
+        $articleEntity =  new Article(
             $article->id,
             $article->uuid,
             $article->perex,
             $article->text,
             $article->validSince,
-            $article->created
+            $article->created,
         );
 
-        return $article;
+        $articleEntity->setScore($article?->score ?? 0);
+
+        return $articleEntity;
     }
 }
