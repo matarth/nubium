@@ -52,10 +52,11 @@ class VotePresenter extends Presenter
         try{
             $this->voteRepository->createNewVote($vote);
         } catch (UniqueConstraintViolationException $e){
-            throw new JsonException(new DuplicateEntryException("Duplicate vote", HttpCode::FORBIDDEN)); // TODO
+            $this->voteRepository->updateVote($vote);
         }
-        $newScore = $this->voteRepository->getVotesForArticle($vote->getArticleId());
 
+        $newScore = $this->voteRepository->getVotesForArticle($vote->getArticleId());
         $this->sendResponse(new JsonResponse(['status' => 'ok', 'articleScore' => $newScore]));
+
     }
 }
