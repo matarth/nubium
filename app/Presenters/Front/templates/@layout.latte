@@ -15,7 +15,9 @@
         {control loginCheck}
         {include content}
 
-        <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+        <div id="flashMessages">
+            <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+        </div>
 	</div>
 	{block scripts}{/block}
 	<script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>

@@ -57,3 +57,16 @@ body {
 .paginator .current {
     color: #00a6ff;
 }
+
+.perex {
+    margin: 0 0 3px 3px;
+    font-weight: bold;
+}
+
+.article .score,.voting {
+    text-align: right;
+}
+
+.article {
+    text-align: left;
+}

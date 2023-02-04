@@ -1,4 +1,10 @@
-
+function addFlashMessage(message, type){
+    const element = document.querySelector("#flashMessages");
+    const node = document.createElement('div');
+    node.className = `flash ${type}`;
+    node.innerHTML = message;
+    element.appendChild(node);
+}
 function vote(articleUuid, score, link){
 
     const data = new FormData();
@@ -13,8 +19,10 @@ function vote(articleUuid, score, link){
             response = JSON.parse(xhttp.response);
             const element = document.querySelector(`#article${articleUuid} .score`);
             element.innerHTML = response.articleScore;
+            addFlashMessage('Děkujeme za Váš hlas', 'info');
         }
         else{
+            addFlashMessage('Už jste zahlasovali.', 'error');
         }
     }
 

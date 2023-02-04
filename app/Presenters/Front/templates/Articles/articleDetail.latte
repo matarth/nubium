@@ -1,7 +1,9 @@
 <div id="article{$article->getUuid()}" class="article">
-    <div>{$article->getPerex()}</div>
-    <div>{$article->getText()}</div>
+    <div class="perex">{$article->getPerex()}</div>
+    <div class="text">{$article->getText()}</div>
     <div class="score">{$article->getScore()}</div>
-    <button onClick="vote({$article->getUuid()}, 1, {$voteLink})">+1</button>
-    <button onClick="vote({$article->getUuid()}, -1, {$voteLink})">-1</button>
+    <div class="voting">
+        <button n:if="$user->isLoggedIn()" onClick="vote({$article->getUuid()}, 1, {$voteLink})">+1</button>
+        <button n:if="$user->isLoggedIn()" onClick="vote({$article->getUuid()}, -1, {$voteLink})">-1</button>
+    </div>
 </div>
