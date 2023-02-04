@@ -8,12 +8,14 @@ class Vote implements EntityInterface
     private int $id;
     private int $userId;
     private int $articleId;
+    private int $score;
 
-    public function __construct(int $id, int $userId, int $articleId){
+    public function __construct(int $id, int $userId, int $articleId, int $score){
 
         $this->id = $id;
         $this->userId = $userId;
         $this->articleId = $articleId;
+        $this->score = $score;
     }
 
     /**
@@ -40,12 +42,21 @@ class Vote implements EntityInterface
         return $this->articleId;
     }
 
+    /**
+     * @return int
+     */
+    public function getScore(): int
+    {
+        return $this->score;
+    }
+
     public function toArray(): array
     {
         return [
             'id' => $this->getId(),
             'article_id' => $this->getArticleId(),
-            'user_id' => $this->getUserId()
+            'user_id' => $this->getUserId(),
+            'score' => $this->getScore()
         ];
     }
 }

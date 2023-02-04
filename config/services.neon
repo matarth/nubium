@@ -15,8 +15,13 @@ services:
 
 	- App\Services\Repository\UserRepository
 	- App\Services\Repository\ArticleRepository
+	- App\Services\Repository\VoteRepository
 
 	- App\Services\Factory\UserFactory
 	- App\Services\Factory\ArticleFactory
+	- App\Services\Factory\VoteFactory
 
 	- App\Services\Components\LoginCheck\LoginCheckFactory
+	- App\Services\Components\ChangePasswordForm\ChangePasswordFormFactory
+	- App\Services\Components\LoginForm\LoginFormFactory
+	- App\Services\Components\RegistrationForm\RegistrationFormFactory

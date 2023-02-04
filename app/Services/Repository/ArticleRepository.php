@@ -59,6 +59,10 @@ class ArticleRepository extends BaseRepository
         return $this->db->table('article')->count('id');
     }
 
+    public function getArticleByUuid(string $articleUuid): Article {
+        return $this->articleFactory->createFromDbRow($this->db->table('article')->where('uuid', $articleUuid)->fetch());
+    }
+
     /**
      * @param Article[] $articles
      * @return Article[]

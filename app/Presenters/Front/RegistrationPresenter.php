@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Presenters;
+namespace App\Presenters\Front;
 
+use App\Presenters\Front\BasePresenter;
 use App\Services\Components\LoginCheck\LoginCheckFactory;
 use App\Services\Components\RegistrationForm\RegistrationFormFactory;
 use Nette\Application\UI\Form;

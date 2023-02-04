@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Presenters;
+namespace App\Presenters\Front;
 
+use App\Presenters\Front\BasePresenter;
 use App\Services\Components\LoginCheck\LoginCheckFactory;
 use App\Services\Repository\ArticleRepository;
 use Nette\Utils\Paginator;
@@ -21,6 +22,7 @@ class ArticlesPresenter extends BasePresenter
 
     public function renderDefault(int $page = 1): void
     {
+        dd($this->link('Api:Vote:default'));
         $paginator = new Paginator();
         $paginator->setItemCount($this->articleRepository->getArticlesCount());
         $paginator->setItemsPerPage(self::itemsPerPage);

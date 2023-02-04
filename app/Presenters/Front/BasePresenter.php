@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Presenters;
+namespace App\Presenters\Front;
 
 use App\Services\Components\LoginCheck\LoginCheck;
 use App\Services\Components\LoginCheck\LoginCheckFactory;

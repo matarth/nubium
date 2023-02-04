@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Presenters;
+namespace App\Presenters\Front;
 
 use App\Entity\User;
+use App\Presenters\Front\BasePresenter;
 use App\Services\Components\ChangePasswordForm\ChangePasswordFormFactory;
 use App\Services\Components\LoginCheck\LoginCheckFactory;
 use App\Services\Repository\UserRepository;

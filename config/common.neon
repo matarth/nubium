@@ -4,7 +4,8 @@ parameters:
 application:
 	errorPresenter: Error
 	mapping:
-		*: App\*Module\Presenters\*Presenter
+		*: App\Presenters\Front\*Presenter
+		Api: App\Presenters\Api\*Presenter
 
 
 session:

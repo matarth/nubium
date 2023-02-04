@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Presenters;
+namespace App\Presenters\Front;
+
+use App\Presenters\Front\BasePresenter;
 
 class LogoutPresenter extends BasePresenter
 {

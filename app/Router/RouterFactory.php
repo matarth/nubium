@@ -15,6 +15,7 @@ final class RouterFactory
     public static function createRouter(): RouteList
     {
         $router = new RouteList;
+        $router->addRoute('/api/<presenter>/<action>[/<id>]', ['module' => 'Api']);
         $router->addRoute('<presenter>/<action>[/<id>]', 'Articles:default');
         return $router;
     }
