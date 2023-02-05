@@ -12,4 +12,7 @@ RUN mv composer.phar /bin/composer
 
 RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-install zip
+
+RUN composer install --dev
+
 CMD php-fpm
