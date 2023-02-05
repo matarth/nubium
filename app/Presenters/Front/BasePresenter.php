@@ -17,7 +17,8 @@ class BasePresenter extends Presenter
         $this->loginCheckFactory = $loginCheckFactory;
     }
 
-    protected function createComponentLoginCheck(): LoginCheck{
+    protected function createComponentLoginCheck(): LoginCheck
+    {
         return $this->loginCheckFactory->create();
     }
 

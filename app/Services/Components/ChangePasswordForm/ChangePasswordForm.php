@@ -15,7 +15,8 @@ class ChangePasswordForm extends Form
     private UserRepository $userRepository;
     private User $user;
 
-    public function __construct(Passwords $passwords, UserRepository $userRepository, User $user){
+    public function __construct(Passwords $passwords, UserRepository $userRepository, User $user)
+    {
         parent::__construct();
 
         $this->passwords = $passwords;
@@ -29,21 +30,22 @@ class ChangePasswordForm extends Form
         $this->onSuccess[] = [$this, 'onSuccess'];
     }
 
-    public function onSuccess(ChangePasswordForm $form, array $data){
+    public function onSuccess(ChangePasswordForm $form, array $data)
+    {
 
-        if(!$this->user->isLoggedIn()){
+        if(!$this->user->isLoggedIn()) {
             throw new AuthenticationException("Unauthorized", 401);
         }
 
         $user = $this->user->getIdentity()->getData()['entity'];
         $presenter = $this->getPresenter();
 
-        if($data['new_password1'] !== $data['new_password2']){
+        if($data['new_password1'] !== $data['new_password2']) {
             $presenter->flashMessage('Hesla se neshodují', 'error');
             return false;
         }
 
-        if(!$this->passwords->verify($data['old_password'] . $user->getEmail(), $user->getPassword())){
+        if(!$this->passwords->verify($data['old_password'] . $user->getEmail(), $user->getPassword())) {
             $presenter->flashMessage('Neplatné heslo', 'error');
             return false;
         }

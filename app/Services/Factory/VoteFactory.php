@@ -12,18 +12,22 @@ class VoteFactory
 
     private ArticleRepository $articleRepository;
 
-    public function __construct(ArticleRepository $articleRepository){
+    public function __construct(ArticleRepository $articleRepository)
+    {
 
         $this->articleRepository = $articleRepository;
     }
 
-    public function createFromApiRequest(Request $request, User $user){
+    public function createFromApiRequest(Request $request, User $user)
+    {
         $articleUuid = $request->getPost('articleUuid');
         $score = intval($request->getPost('score'));
 
         $article = $this->articleRepository->getArticleByUuid($articleUuid);
 
-        /** @var \App\Entity\User $userentity */
+        /**
+ * @var \App\Entity\User $userentity 
+*/
         $userEntity = $user->getIdentity()->getData()['entity'];
 
         return new Vote(

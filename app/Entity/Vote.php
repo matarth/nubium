@@ -10,7 +10,8 @@ class Vote implements EntityInterface
     private int $articleId;
     private int $score;
 
-    public function __construct(int $id, int $userId, int $articleId, int $score){
+    public function __construct(int $id, int $userId, int $articleId, int $score)
+    {
 
         $this->id = $id;
         $this->userId = $userId;

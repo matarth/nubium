@@ -28,7 +28,7 @@ class SettingsPresenter extends BasePresenter
     public function startup()
     {
         parent::startup();
-        if(!$this->user->isLoggedIn()){
+        if(!$this->user->isLoggedIn()) {
             $this->flashMessage('Musíte se nejdříve přihlásit.', 'error');
             $this->redirect('Articles:default');
         }
@@ -38,7 +38,8 @@ class SettingsPresenter extends BasePresenter
     }
 
 
-    public function createComponentChangePasswordForm(){
+    public function createComponentChangePasswordForm()
+    {
         return $this->changePasswordFormFactory->create();
     }
 }

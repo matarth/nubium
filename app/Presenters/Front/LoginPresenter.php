@@ -18,7 +18,8 @@ class LoginPresenter extends BasePresenter
         $this->loginFormFactory = $loginFormFactory;
     }
 
-    protected function createComponentLoginForm(): LoginForm {
+    protected function createComponentLoginForm(): LoginForm
+    {
         return $this->loginFormFactory->create();
     }
 }

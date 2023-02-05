@@ -19,7 +19,8 @@ class VotePresenter extends Presenter
     private VoteRepository $voteRepository;
     private VoteFactory $voteFactory;
 
-    public function __construct(VoteRepository $voteRepository, VoteFactory $voteFactory){
+    public function __construct(VoteRepository $voteRepository, VoteFactory $voteFactory)
+    {
 
         $this->voteRepository = $voteRepository;
         $this->voteFactory = $voteFactory;
@@ -28,22 +29,23 @@ class VotePresenter extends Presenter
     public function startup()
     {
         parent::startup();
-        if(!$this->user->isLoggedIn()){
+        if(!$this->user->isLoggedIn()) {
             throw new UnauthorizedException("Unauthorized");
         }
     }
 
-    public function actionDefault(){
+    public function actionDefault()
+    {
 
         $request = $this->getRequest();
-        if(!$request->isMethod('POST')){
+        if(!$request->isMethod('POST')) {
             throw new BadRequestException(HttpCode::METHOD_NOT_ALLOWED);
         }
 
         $vote = intval($request->getPost('score'));
         $articleUuid = $request->getPost('articleUuid');
 
-        if(!in_array($vote, [-1,1]) || is_null($articleUuid)){
+        if(!in_array($vote, [-1,1]) || is_null($articleUuid)) {
             throw new BadRequestException(HttpCode::BAD_REQUEST);
         }
 

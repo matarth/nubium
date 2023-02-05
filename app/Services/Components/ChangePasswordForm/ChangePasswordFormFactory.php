@@ -13,14 +13,16 @@ class ChangePasswordFormFactory
     private UserRepository $userRepository;
     private User $user;
 
-    public function __construct(Passwords $passwords, UserRepository $userRepository, User $user){
+    public function __construct(Passwords $passwords, UserRepository $userRepository, User $user)
+    {
 
         $this->passwords = $passwords;
         $this->userRepository = $userRepository;
         $this->user = $user;
     }
 
-    public function create(): ChangePasswordForm {
+    public function create(): ChangePasswordForm
+    {
         return new ChangePasswordForm($this->passwords, $this->userRepository, $this->user);
     }
 

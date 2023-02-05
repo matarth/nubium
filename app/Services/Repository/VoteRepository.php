@@ -8,17 +8,20 @@ use Nette\Database\Explorer;
 class VoteRepository extends BaseRepository
 {
 
-    public function __construct(Explorer $db){
+    public function __construct(Explorer $db)
+    {
         parent::__construct($db->table('vote'));
     }
 
-    public function createNewVote(Vote $vote): void{
+    public function createNewVote(Vote $vote): void
+    {
         $voteArray = $vote->toArray();
         unset($voteArray['id']);
         $this->db->insert($voteArray);
     }
 
-    public function updateVote(Vote $vote): void {
+    public function updateVote(Vote $vote): void
+    {
         $voteArray = $vote->toArray();
         unset($voteArray['id']);
         $this->db

@@ -17,7 +17,7 @@ class ArticleRepository extends BaseRepository
     {
         parent::__construct($db->table('article'));
 
-        if(!$user->isLoggedIn()){
+        if(!$user->isLoggedIn()) {
             $this->db->where('public', true);
         }
 
@@ -29,11 +29,13 @@ class ArticleRepository extends BaseRepository
         return $this->db->count('id');
     }
 
-    public function getArticleByUuid(string $articleUuid): Article {
+    public function getArticleByUuid(string $articleUuid): Article
+    {
         return $this->articleFactory->createFromDbRow($this->db->where('uuid', $articleUuid)->fetch());
     }
 
-    public function getArticlesForPage(Paginator $paginator, string $order = 'validSince', string $direction = 'DESC'): array {
+    public function getArticlesForPage(Paginator $paginator, string $order = 'validSince', string $direction = 'DESC'): array
+    {
         $ret = [];
         $articles = $this->db
             ->select('article.*, SUM(IFNULL(:vote.score, 0)) score')
