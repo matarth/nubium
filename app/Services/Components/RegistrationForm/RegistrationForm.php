@@ -41,11 +41,11 @@ class RegistrationForm extends Form
             && $this->userRepository->getUserByEmail($data['email']) === null
         ) {
             $this->userRepository->saveNewUser($this->userFactory->createFromRegistrationForm($form));
-            $presenter->flashMessage('Uživatel uložen', 'info');
-            $presenter->redirect('Login:default');
+            $presenter?->flashMessage('Uživatel uložen', 'info');
+            $presenter?->redirect('Login:default');
         }
         else{
-            $presenter->flashMessage('Nepodařilo se uložit uživatele', 'error');
+            $presenter?->flashMessage('Nepodařilo se uložit uživatele', 'error');
         }
     }
 

@@ -34,19 +34,20 @@ class VotePresenter extends Presenter
         }
     }
 
-    public function actionDefault()
+    public function actionDefault(): void
     {
 
         $request = $this->getRequest();
-        if(!$request->isMethod('POST')) {
-            throw new BadRequestException(HttpCode::METHOD_NOT_ALLOWED);
+
+        if(!$request || !$request->isMethod('POST')) {
+            throw new \Exception("Bad method", 405);
         }
 
         $vote = intval($request->getPost('score'));
         $articleUuid = $request->getPost('articleUuid');
 
         if(!in_array($vote, [-1,1]) || is_null($articleUuid)) {
-            throw new BadRequestException(HttpCode::BAD_REQUEST);
+            throw new BadRequestException("Invalid argument");
         }
 
         $vote = $this->voteFactory->createFromApiRequest($request, $this->user);

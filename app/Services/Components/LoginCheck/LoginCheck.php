@@ -17,10 +17,9 @@ class LoginCheck extends Control
 
     public function render(): void
     {
-        $this->template->isLoggedIn = $this->user->isLoggedIn();
-        $this->template->user = $this->user?->getIdentity()?->getData()['entity'];
-
-        $this->template->render(__DIR__ . '/loginCheck.latte');
-
+        $this->getTemplate()->isLoggedIn = $this->user->isLoggedIn();
+        $this->getTemplate()->user = $this->user->getIdentity()?->getData()['entity'];
+        $this->getTemplate()->setFile(__DIR__ . 'loginCheck.latte');
+        $this->getTemplate()->render();
     }
 }

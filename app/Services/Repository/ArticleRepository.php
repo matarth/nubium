@@ -3,6 +3,7 @@
 namespace App\Services\Repository;
 
 use App\Entity\Article;
+use App\Exception\NotFoundException;
 use App\Services\Factory\ArticleFactory;
 use Nette\Database\Explorer;
 use Nette\Security\User;
@@ -31,9 +32,19 @@ class ArticleRepository extends BaseRepository
 
     public function getArticleByUuid(string $articleUuid): Article
     {
-        return $this->articleFactory->createFromDbRow($this->db->where('uuid', $articleUuid)->fetch());
+        $article = $this->db->where('uuid', $articleUuid)->fetch();
+        if(is_null($article)){
+            throw new NotFoundException("Article not found");
+        }
+        return $this->articleFactory->createFromDbRow($article);
     }
 
+    /**
+     * @param Paginator $paginator
+     * @param string $order
+     * @param string $direction
+     * @return Article[]
+     */
     public function getArticlesForPage(Paginator $paginator, string $order = 'validSince', string $direction = 'DESC'): array
     {
         $ret = [];

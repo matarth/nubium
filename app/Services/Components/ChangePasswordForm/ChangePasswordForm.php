@@ -30,31 +30,37 @@ class ChangePasswordForm extends Form
         $this->onSuccess[] = [$this, 'onSuccess'];
     }
 
-    public function onSuccess(ChangePasswordForm $form, array $data)
+    /**
+     * @param ChangePasswordForm $form
+     * @param mixed[] $data
+     * @return void
+     * @throws AuthenticationException
+     */
+    public function onSuccess(ChangePasswordForm $form, array $data): void
     {
 
         if(!$this->user->isLoggedIn()) {
             throw new AuthenticationException("Unauthorized", 401);
         }
 
-        $user = $this->user->getIdentity()->getData()['entity'];
+        $user = $this->user->getIdentity()?->getData()['entity'];
         $presenter = $this->getPresenter();
 
         if($data['new_password1'] !== $data['new_password2']) {
-            $presenter->flashMessage('Hesla se neshodují', 'error');
-            return false;
+            $presenter?->flashMessage('Hesla se neshodují', 'error');
+            return;
         }
 
         if(!$this->passwords->verify($data['old_password'] . $user->getEmail(), $user->getPassword())) {
-            $presenter->flashMessage('Neplatné heslo', 'error');
-            return false;
+            $presenter?->flashMessage('Neplatné heslo', 'error');
+            return;
         }
 
         $newPasswordHash = $this->passwords->hash($data['new_password1'] . $user->getEmail());
         $user->setPassword($newPasswordHash);
         $this->userRepository->updateUser($user);
 
-        $presenter->flashMessage('Heslo úspěšně změneno. ', 'info');
-        return true;
+        $presenter?->flashMessage('Heslo úspěšně změneno. ', 'info');
+        return;
     }
 }

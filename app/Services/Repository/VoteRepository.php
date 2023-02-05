@@ -32,6 +32,7 @@ class VoteRepository extends BaseRepository
 
     public function getVotesForArticle(int $articleId): int
     {
+        // @phpstan-ignore-next-line
         return $this->db->select('sum(score) score')->where('article_id', $articleId)->fetch()->score;
     }
 

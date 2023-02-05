@@ -4,12 +4,12 @@ namespace App\Exception;
 
 use Throwable;
 
-class UnauthorizedException extends AppException
+class NotFoundException extends AppException
 {
 
     public function __construct(string $message = "", ?Throwable $previous = null)
     {
-        parent::__construct($message, 403, $previous);
+        parent::__construct($message, 404, $previous);
     }
 
 }
