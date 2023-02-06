@@ -1,14 +1,13 @@
 {block content}
     <div class="sort">
-        <a n:href="this order => 'validSince', direction => 'DESC'">Datum vydani ↓</a>
-        <a n:href="this order => 'validSince', direction => 'ASC'">Datum vydani ↑</a>
+        <a n:href="this order => 'perex', direction => 'DESC', page => 1">Perex ↓</a>
+        <a n:href="this order => 'perex', direction => 'ASC', page => 1">Perex ↑</a>
 
-        <a n:href="this order => 'perex', direction => 'DESC'">Perex ↓</a>
-        <a n:href="this order => 'perex', direction => 'ASC'">Perex ↑</a>
+        <a n:href="this order => 'score', direction => 'DESC', page => 1">Hodnoceni ↓</a>
+        <a n:href="this order => 'score', direction => 'ASC', page => 1">Hodnoceni ↑</a>
 
-        <a n:href="this order => 'score', direction => 'DESC'">Hodnoceni ↓</a>
-        <a n:href="this order => 'score', direction => 'ASC'">Hodnoceni ↑</a>
-
+        <a n:href="this order => 'validSince', direction => 'DESC', page => 1">Datum vydani ↓</a>
+        <a n:href="this order => 'validSince', direction => 'ASC', page => 1">Datum vydani ↑</a>
 
     </div>
     {foreach $articles as $article}

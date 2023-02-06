@@ -48,6 +48,7 @@
     "scripts": {
         "phpcs": "phpcbf app/",
         "phpstan": "phpstan analyse -c phpstan.neon",
+        "tests": "sqlite3 tests/testDb.db < tests/testDump.sql; php vendor/bin/codecept run Acceptance",
         "ci": [
             "@phpstan",
             "@phpcs"
