@@ -11,7 +11,7 @@ class Bootstrap
     public static function boot(): Configurator
     {
 
-        $environment = Environment::getInstance('test');
+        $environment = Environment::getInstance();
 
         $configurator = new Configurator;
         $appDir = dirname(__DIR__);
