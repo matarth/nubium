@@ -11,9 +11,10 @@ final class Environment
     private string $environment;
     private static ?Environment $instance = null;
 
-    private function __construct()
+    private function __construct(string $env)
     {
-        $env = getenv('PHP_ENV_MODE');
+
+        $env = empty($env) ? getenv('PHP_ENV_MODE') : $env;
 
         if(!is_string($env)) {
             throw new \Exception("Invalid environment variable");
@@ -25,17 +26,21 @@ final class Environment
         }
     }
 
-    public static function getInstance(): ?self
+    public static function getInstance(string $env = ''): ?self
     {
         if(is_null(Environment::$instance)) {
-            self::$instance = new Environment();
+            self::$instance = new Environment($env);
         }
 
         return self::$instance;
     }
 
-    public function getEnvironent(): string
+    public function getEnvironment(): string
     {
         return $this->environment;
+    }
+
+    public function isTest(): bool {
+        return in_array($this->environment, ['dev', 'test']);
     }
 }

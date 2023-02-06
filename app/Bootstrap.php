@@ -8,8 +8,11 @@ use Nette\Bootstrap\Configurator;
 
 class Bootstrap
 {
-    public static function boot(string $environment): Configurator
+    public static function boot(): Configurator
     {
+
+        $environment = Environment::getInstance('test');
+
         $configurator = new Configurator;
         $appDir = dirname(__DIR__);
 
@@ -23,10 +26,10 @@ class Bootstrap
             ->addDirectory(__DIR__)
             ->register();
 
-        $configurator->addParameters(['basePath' => $appDir]);
+        $configurator->addStaticParameters(['basePath' => $appDir]);
         $configurator->addConfig($appDir . '/config/common.neon');
         $configurator->addConfig($appDir . '/config/services.neon');
-        $configurator->addConfig($appDir . "/config/$environment.neon");
+        $configurator->addConfig($appDir . "/config/".$environment->getEnvironment().".neon");
 
         return $configurator;
     }
