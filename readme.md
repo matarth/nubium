@@ -33,6 +33,11 @@ Ten importujeme do databáze, která běží v kontejneru `nubium_db` na portu `
 
 
 ### Spuštění
+Pro spuštení je nutné vytvořit adresář `temp/` a `log/` a upravit jim práva přikazem:
+````
+    sudo chmod 777 -R temp log
+````
+
 Po nainstalování knihoven a vytvoření databáze bude web dostupný na adrese `http://localhost` nebo `https://localhost`.
 V připadě HTTPS bude nutné v prohlížeči odsouhlasit vstup na nedůvěryhodnou stránku nebo přidat do prohlížeče certifikační autoritu ze souboru `docker/nginx/CA.pem`
 
