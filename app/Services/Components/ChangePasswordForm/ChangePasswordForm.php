@@ -23,8 +23,8 @@ class ChangePasswordForm extends Form
         $this->userRepository = $userRepository;
         $this->user = $user;
 
-        $this->addPassword('old_password', 'Staré heslo:');
-        $this->addPassword('new_password1', 'Nové heslo:');
+        $this->addPassword('old_password', 'Staré heslo:')->setRequired();
+        $this->addPassword('new_password1', 'Nové heslo')->setRequired()->addRule(Form::MIN_LENGTH, 'Heslo musí mít alespoň %d znaků', 3);
         $this->addPassword('new_password2', 'Kontrola nového hesla:');
         $this->addSubmit('submit', 'Změnit');
         $this->onSuccess[] = [$this, 'onSuccess'];

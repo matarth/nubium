@@ -18,11 +18,10 @@ class RegistrationForm extends Form
         $this->userFactory = $userFactory;
         $this->userRepository = $userRepository;
 
-
-        $this->addEmail('email', 'Email');
-        $this->addText('name', 'Jméno');
-        $this->addPassword('password1', 'Heslo');
-        $this->addPassword('password2', 'Heslo2');
+        $this->addEmail('email', 'Email')->setRequired();
+        $this->addText('name', 'Jméno')->setRequired();
+        $this->addPassword('password1', 'Heslo')->setRequired()->addRule(Form::MIN_LENGTH, 'Heslo musí mít alespoň %d znaků', 3);
+        $this->addPassword('password2', 'Heslo2')->setRequired();
         $this->addSubmit('submit', 'Odeslat');
         $this->onSuccess[] = [$this, 'formSuccess'];
     }

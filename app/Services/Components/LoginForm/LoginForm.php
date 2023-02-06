@@ -17,8 +17,8 @@ class LoginForm extends Form
         parent::__construct();
         $this->user = $user;
 
-        $this->addEmail('email', 'Email');
-        $this->addPassword('password', 'Heslo');
+        $this->addEmail('email', 'Email')->setRequired();
+        $this->addPassword('password', 'Heslo')->setRequired();
         $this->addSubmit('submit', 'Přihlásit se');
         $this->onSuccess[] = [$this, 'onSuccess'];
     }

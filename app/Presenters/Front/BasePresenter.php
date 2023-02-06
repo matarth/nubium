@@ -9,7 +9,7 @@ use Nette\Application\UI\Presenter;
 class BasePresenter extends Presenter
 {
 
-    protected const itemsPerPage = 5;
+    protected const itemsPerPage = 3;
     protected LoginCheckFactory $loginCheckFactory;
 
     public function __construct(LoginCheckFactory $loginCheckFactory)

@@ -19,7 +19,7 @@ class LoginCheck extends Control
     {
         $this->getTemplate()->isLoggedIn = $this->user->isLoggedIn();
         $this->getTemplate()->user = $this->user->getIdentity()?->getData()['entity'];
-        $this->getTemplate()->setFile(__DIR__ . 'loginCheck.latte');
+        $this->getTemplate()->setFile(__DIR__ . '/loginCheck.latte');
         $this->getTemplate()->render();
     }
 }
