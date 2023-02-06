@@ -9,7 +9,7 @@ require __DIR__ . '/../vendor/autoload.php';
 $configurator = new Configurator;
 $appDir = dirname(__DIR__);
 
-$configurator->setDebugMode(false);
+$configurator->setDebugMode(true);
 $configurator->enableTracy($appDir . '/log');
 
 $configurator->setTimeZone('Europe/Prague');
